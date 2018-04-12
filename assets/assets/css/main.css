@@ -1,0 +1,155 @@
+oranye
+{
+    color: #c87934;
+}
+.rbt
+{
+    font-family: 'Roboto condensed';
+}
+.rbtn
+{
+    font-weight: 400;
+    font-size: 32pt;
+    line-height: 70px;
+}
+.rbtl
+{
+    font-weight: 200;
+    
+}
+.rbtmenu
+{
+    font-size: 16pt;
+    font-weight: 300;
+}
+.rbtmenu2
+{
+    font-size: 24px;
+}
+.navkanan
+{
+    line-height: 85px;
+}
+.jumbotron
+{
+    height: 90px;
+}
+
+.dash {
+    background-color: #c9e4ed;
+    
+}
+
+.page-sidebar .sidebar-menu .menu-items > li > a > .title {
+    width: 75%;
+}
+.page-sidebar .sidebar-menu .menu-items > li > a {
+    padding: 3px 3px;
+ 
+}
+
+.title.rbtmenu {
+    margin-left: 30px;
+}
+.pmenu
+{
+    padding: 24px 0 13px 0;
+}
+
+.icon-thumbnail {
+    background: none;
+}
+
+.page-sidebar .sidebar-header
+{
+    height: 120px;
+    background: transparent;
+    
+}
+
+@media (max-width: 1024px) {
+.page-sidebar .sidebar-header
+{
+    height: 120px;
+    background: #333333 no-repeat;
+    
+}
+}
+.header
+{
+    height: 120px;
+    background: #333333 !important;
+}
+
+.page-container .page-content-wrapper .content {
+    padding-top: 120px;
+ }
+
+.page-sidebar .sidebar-overlay-slide {
+
+    padding: 0px 20px 20px 20px;
+ 
+
+
+}
+
+.page-sidebar 
+{
+    background: transparent;
+    
+}
+.menu-items
+{
+    background: #4d4d4d;
+}
+
+.header .brand {
+    margin-left: 30px;
+    text-align: left;
+}
+
+.sidebar-header-controls {
+    margin-left: 100px;
+    margin-top: 20px;
+}
+
+.rootmenu
+{
+     padding: 0px 0px 30px 30px;   
+}
+.page-sidebar .sidebar-menu .menu-items > li ul.sub-menu {
+    background-color: #1a1a1a;
+ }
+
+.setmenu
+{
+    font-size: 18pt;
+    line-height: 70px;
+}
+.white
+{
+    color: #ffffff !important;
+}
+
+.thumbnail-wrapper.d32 {
+    width: 70px;
+    height: 70px;
+}
+.notification-toggle {
+    top: 75px;
+ }
+@media (max-width: 480px) {
+    body .header .header-inner {
+        height: 120px !important;
+    }
+}
+@media (max-width: 480px) {
+    body .header {
+        width: 100%;
+        height: 120px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    }
+}
+.page-sidebar .sidebar-menu {
+    background:#333333;
+}

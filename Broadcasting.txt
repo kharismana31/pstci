@@ -1,0 +1,11 @@
+1 = admin to member
+	2 = member to admin
+3 = public to member
+	4 = public to admin
+5 = member to member
+
+admin = 2 4 { 1
+member = 1 3 5 { 5 2
+
+2 4 -v
+1 3 5 -v
