@@ -74,8 +74,7 @@
 				<div class="row">
 					<div>&nbsp;</div>
 					<div class="col-md-12">
-						<button type="submit" class="btn btn-primary btn-cons pull-right"><a href="public/C_public/result_search/"></a>
-						Search</button>
+						<a class="btn btn-primary btn-cons pull-right" href="result_search/">Search</a>
 					</div>
 				</div>
 				

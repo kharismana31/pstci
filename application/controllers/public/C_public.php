@@ -21,18 +21,23 @@
 		
 		public function result_search()
 		{
-			$this->template->load('template/template','public/public_result');
+			$data['list_result']=$this->M_listing->getAll()->result_array();
+
+			$this->template->load('template/template','public/public_result',$data);
 		}
 
 		public function home(){
 			$this->template->load('template/template','public/public_index');
 		}
 
-		public function result_advance($type)
-		{
-			print_r($type);
-			die();
-			$data["product_type"]=$this->M_listing->get_by_type($type)->result_array();
+		public function result_advance()
+		{	
+			$type=$this->uri->segment(4);
+			//print_r($type);
+			//die();
+			$data["list_result"]=$this->M_listing->get_by_type($type)->result_array();
+			//print_r($data);
+			//die();
 			$this->template->load('template/template','public/public_result',$data);
 		}
 	}		

@@ -37,17 +37,17 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h5 class="panel-title">
-									<a data-toggle="collapse" data-parent="accordion" href="#collapse1">Product Type</a>
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Product Type</a>
 								</h5>
 							</div>
 							<div id="collapse1" class="panel-collapse collapse in">
 								<div class="panel-body">
 									<ul class="list-group">
-										<li value="Conductor"><a href="index.php/public/C_public/result_advance">Conductor</a></li>
-										<li value="Casing"><a href="#">Casing</a></li>
-										<li value="Tubing"><a href="#">Tubing</a></li>
-										<li value="Pop Joints"><a href="#">Pop Joints</a></li>
-										<li value="Couplings"><a href="#">Couplings</a></li>
+										<li value="Conductor"><a href="<?php echo base_url()?>public/C_public/result_advance/conductor">Conductor</a></li>
+										<li value="Casing"><a href="<?php echo base_url()?>public/C_public/result_advance/casing">Casing</a></li>
+										<li value="Tubing"><a href="<?php echo base_url()?>public/C_public/result_advance/tubing">Tubing</a></li>
+										<li value="Pop Joints"><a href="<?php echo base_url()?>public/C_public/result_advance/popjoints">Pop Joints</a></li>
+										<li value="Couplings"><a href="<?php echo base_url()?>public/C_public/result_advance/couplings">Couplings</a></li>
 									</ul>
 								</div>
 							</div>
@@ -56,7 +56,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h5 class="panel-title">
-									<a data-toggle="collapse" data-parent="accordion" href="#collapse2">Size</a>
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Size</a>
 								</h5>
 							</div>
 							<div id="collapse2" class="panel-collapse collapse">
@@ -69,7 +69,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h5 class="panel-title">
-									<a data-toggle="collapse" data-parent="accordion" href="#collapse3">Grade</a>
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Grade</a>
 								</h5>
 							</div>
 							<div id="collapse3" class="panel-collapse collapse">
@@ -86,7 +86,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h5 class="panel-title">
-									<a data-toggle="collapse" data-parent="accordion" href="#collapse4">Connection</a>
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Connection</a>
 								</h5>
 							</div>
 							<div id="collapse4" class="panel-collapse collapse">
@@ -103,7 +103,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h5 class="panel-title">
-									<a data-toggle="collapse" data-parent="accordion" href="#collapse5">Manufacturer</a>
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Manufacturer</a>
 								</h5>
 							</div>
 							<div id="collapse5" class="panel-collapse collapse">
@@ -120,7 +120,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h5 class="panel-title">
-									<a data-toggle="collapse" data-parent="accordion" href="#collapse6">Age</a>
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapse6">Age</a>
 								</h5>
 							</div>
 							<div id="collapse6" class="panel-collapse collapse">
@@ -137,7 +137,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h5 class="panel-title">
-									<a data-toggle="collapse" data-parent="accordion" href="#collapse7">Location</a>
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapse7">Location</a>
 								</h5>
 							</div>
 							<div id="collapse7" class="panel-collapse collapse">
@@ -167,26 +167,36 @@
 				</thead>
 					
 				<tbody>
-					<tr data-toggle="collapse" data-parent="#accordion" data-target="#collapse1" class="animasi accordion text-black">
-
+					<?php
+						if($list_result){
+							$n=0;
+							foreach ($list_result as $result) {
+								echo $n;
+								echo "<tr data-toggle=\"collapse\" data-parent=\"#accordion\" data-target=\"collapsedetail\" class=\"animasi accordion text-black\"><td>".$result['od']."\" ".$result['weight']."PPF P110 JFELION ".$result['range_gen']."</td><td>".$result['quantity']."</td><td>1000</td><td>".$result['location']."</td><td><button class=\"btn btn-info btn-submit\">Compare</button></td></tr>";
+								echo "<tr id=\"collapsedetail\" class=\"collapse text-black\"><td colspan=\"5\">No Picture</td></tr>";
+								$n=$n+1;
+							}
+						}
+					?>
+					<tr data-toggle="collapse" data-parent="#accordion" data-target="#collapsedetail1" class="animasi accordion text-black">
 						<td>9 5/8” 47 PPF P110 JFELION R3</td>
 						<td>100</td>
 						<td>1000</td>
 						<td>Australia</td>
 						<td><button class="btn btn-info btn-submit">Compare</button></td>
 					</tr>
-					<tr id="collapse1" class="collapse text-black">
+					<tr id="collapsedetail1" class="collapse text-black">
 						<td><img src="<?php echo base_url('assets/');?>images/pipa.jpg" width="218px"><br><br><img src="<?php echo base_url('assets/');?>images/bg4.jpg" width="70px"> <img src="<?php echo base_url('assets/');?>images/bg8.jpg" width="70px"> <img src="<?php echo base_url('assets/');?>images/bg11.jpg" width="70px"></td>
 						<td colspan="4"><h4>OTHER DETAILS</h4><br><br><h4>PRICE : 7.00 USD</h4></td>
 					</tr>
-					<tr data-toggle="collapse" data-parent="#accordion" data-target="#collapse2" class="animasi accordion text-black">
+					<tr data-toggle="collapse" data-parent="#accordion" data-target="#collapsedetail2" class="animasi accordion text-black">
 						<td>9 5/8” 47 PPF P110 JFELION R3</td>
 						<td>200</td>
 						<td>2000</td>
 						<td>Indonesia</td>
 						<td><button class="btn btn-info btn-submit">Compare</button></td>
 					</tr>
-					<tr id="collapse2" class="collapse text-black">
+					<tr id="collapsedetail2" class="collapse text-black">
 						<td colspan="5">No Picture</td>
 					</tr>
 				</tbody>

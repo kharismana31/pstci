@@ -7,12 +7,16 @@
 			$this->db->insert('product_listing', $data);
 		}
 		
+		public function getAll()
+		{
+			return $this->db->get('product_listing');
+		}
+
 		public function get_by_type($type)
 		{
 			$this->db->from('product_listing');
 			$this->db->where('product_type',$type);
-			$query = $this->db->get();
-			return $query->row();
+			return $this->db->get();
 		}
 		
 		public function update($where, $data)
