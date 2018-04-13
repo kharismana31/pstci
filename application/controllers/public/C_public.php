@@ -14,30 +14,34 @@
 			$this->template->load('template/template','public/public_compare');
 		}
 		
+		public function home(){
+			$this->template->load('template/template','public/public_index');
+		}
+
 		public function search()
 		{
+			$data['list_product'] = $this->M_listing->get
 			$this->template->load('template/template','public/public_search');
 		}
 		
 		public function result_search()
 		{
-			$data['list_result']=$this->M_listing->getAll()->result_array();
-
+			$input = array('product_type' => $this->input->get('product'), 
+							'steel_type' => $this->input->get('steeltype'),
+							'measure' => $this->input->get('uom'),
+							'od' => $this->input->get('od'),
+							'weight' => $this->input->get('weight'));
+			//print_r($input);
+			//die();
+			$data['list_result']=$this->M_listing->getList($input)->result_array();
+			//print_r($data);
 			$this->template->load('template/template','public/public_result',$data);
-		}
-
-		public function home(){
-			$this->template->load('template/template','public/public_index');
 		}
 
 		public function result_advance()
 		{	
 			$type=$this->uri->segment(4);
-			//print_r($type);
-			//die();
-			$data["list_result"]=$this->M_listing->get_by_type($type)->result_array();
-			//print_r($data);
-			//die();
+			$data["list_result"]=$this->M_listing->getByType($type)->result_array();
 			$this->template->load('template/template','public/public_result',$data);
 		}
 	}		

@@ -2,17 +2,31 @@
 	
 	class M_listing extends CI_Model{
 		
-		public function add_product($data)
+		public function addProduct($data)
 		{
 			$this->db->insert('product_listing', $data);
 		}
 		
-		public function getAll()
+		public function getList($data)
 		{
-			return $this->db->get('product_listing');
+			$this->db->from('product_listing');
+			if($data['product_type']!="all"){
+				$this->db->where('product_type',$data['product_type']);
+				if($data['steel_type']!="all"){
+					$this->db->where('steel_type',$data['steel_type']);
+					if($data['od']!=0){
+						$this->db->where('od',$data['od']);
+						if($data['weight']!=0){
+							$this->db->where('weight',$data['weight']);
+						}
+					}
+				}
+			}
+			return $this->db->get();
+
 		}
 
-		public function get_by_type($type)
+		public function getByType($type)
 		{
 			$this->db->from('product_listing');
 			$this->db->where('product_type',$type);
