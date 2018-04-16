@@ -28,7 +28,7 @@
 										<div class="bg-master-lighter m-b-20">
 											<p class="p-t-40 p-l-50 p-b-40 fs-16 font-heading">Sign up an Account</p>
 											
-											<form id="form-login" class="p-l-50 p-r-50 p-b-40 text-master" role="form" action="<?php echo site_url();?>admin/C_user/add_register" method="post">
+											<form id="form-login" class="p-l-50 p-r-50 p-b-40 text-master" role="form" action="<?php echo site_url();?>admin/User/add_register" method="post">
 												
 												<div class="row">
 													<div class="col-md-6">
@@ -60,8 +60,8 @@
 												</div>
 												<div class="form-group form-group-default form-group-default-select2 required">
 													<label>Country</label>
-													<select class="full-width" data-init-plugin="select2" name="country" required>
-														<optgroup label="Asia">
+													<select class="full-width" data-init-plugin="select2" name="country" onchange="ChangeCountry(this)"  required>
+														<!--<optgroup label="Asia">
 															<option>Indonesia</option>
 															<option>Malaysia</option>
 														</optgroup>
@@ -69,20 +69,25 @@
 															<option>Holland</option>
 															<option>Germany</option>
 															<option>Argentina</option>
-														</optgroup>
+														</optgroup>-->
+                                                        <?php
+                                                            foreach($countries as $country):
+                                                        ?>
+                                                        <option data-cc="<?= $country['phonecode'] ?>" value="<?= $country['name'] ?>"><?= $country['name'] ?></option>
+                                                        <?php endforeach; ?>
 													</select>
 												</div>
 												<div class="row">
 													<div class="col-md-6">
 														<div class="form-group form-group-default required">
 															<label>Contact No: Country Code</label>
-															<input type="number" class="form-control" placeholder="e.g.60199" name="ccode" required />
+															<input type="number" class="form-control" placeholder="e.g.60199" name="ccode" min="0" required />
 														</div>
 													</div>
 													<div class="col-md-6">
 														<div class="form-group form-group-default required">
 															<label>Contact No: Phone Number</label>
-															<input type="number" class="form-control" placeholder="e.g.+62xxxxxxxxxxx" name="pnumber" required />
+															<input type="number" class="form-control" placeholder="e.g.+62xxxxxxxxxxx" name="pnumber" min="0" required />
 														</div>
 													</div>
 												</div>
@@ -122,3 +127,10 @@
 		</div> 
 	</div>
 </div>
+
+<script>
+    function ChangeCountry(that) {
+        var cc = $(that).find(':selected').data('cc');
+        $('input[name=ccode]').val(cc);
+    }
+</script>

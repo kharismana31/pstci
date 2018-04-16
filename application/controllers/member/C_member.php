@@ -9,7 +9,7 @@
 			
 			//validasi jika session dengan level manager mengakses halaman ini maka akan dialihkan ke halaman manager
 			if ($this->session->userdata('access') == "a") {
-				redirect('admin/C_admin');
+				redirect('admin/Admin');
 			}
 		}
 		

@@ -20,7 +20,6 @@
 
 		public function search()
 		{
-			$data['list_product'] = $this->M_listing->get
 			$this->template->load('template/template','public/public_search');
 		}
 		

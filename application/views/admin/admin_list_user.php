@@ -99,7 +99,7 @@
 			"order": [],
 			"autoWidth": false,
 			"ajax": {
-				"url": '<?php echo site_url('admin/C_registered/table_list'); ?>',
+				"url": '<?php echo site_url('admin/Registered/table_list'); ?>',
 				"type": "POST"
 			},
 			"columns": [
@@ -185,7 +185,7 @@
 				modalConfirm(function(confirm){
 					if(confirm){
 						$.ajax({
-							url:'<?php echo site_url('admin/C_registered/delete_check')?>',
+							url:'<?php echo site_url('admin/Registered/delete_check')?>',
 							method:'POST',
 							data:{id:id},
 							success:function()

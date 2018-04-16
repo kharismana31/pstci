@@ -175,7 +175,7 @@
         modalConfirm(function(confirm){
           if(confirm){
             $.ajax({
-              url:'<?php echo site_url('admin/C_view_listing_product/delete_listing')?>',
+              url:'<?php echo site_url('admin/View_listing/delete_listing')?>',
               method:'POST',
               data:{id:id},
               success:function()
@@ -295,7 +295,7 @@
     
     $('#update_product_listing').click(function(){
       $.ajax({
-        url: "<?php echo site_url('admin/C_view_listing_product/update_listing');?>",
+        url: "<?php echo site_url('admin/View_listing/update_listing');?>",
         type: "POST",
         data: $('#form_listing').serialize(),
         success:function(){
@@ -342,7 +342,7 @@
     
     //Ajax Load data from ajax
     $.ajax({
-      url : "<?php echo site_url('admin/C_view_listing_product/get_id_listing/')?>/" + id,
+      url : "<?php echo site_url('admin/View_listing/get_id_listing/')?>/" + id,
       type: "POST",
       dataType: "JSON",
       success: function(data)

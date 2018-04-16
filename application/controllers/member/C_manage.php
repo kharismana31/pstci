@@ -12,7 +12,7 @@
 				$this->cekLogin();
 
 				if ($this->session->userdata('access') == "a") {
-				redirect('admin/C_admin');
+				redirect('admin/Admin');
 			}
 
 		}

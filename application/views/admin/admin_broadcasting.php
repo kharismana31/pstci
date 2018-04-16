@@ -33,7 +33,7 @@
 											<div class="btn-group pull-right m-b-10 btn-group">
 												<button class="btn btn-default" id="delete_check"> Delete Mesage <span class="fa fa-trash"></span></button>
 												
-												<a href="<?php echo site_url() ?>admin/C_broadcasting/create" class="btn btn-default">Create Message <span class="fa fa-pencil"></span></a>
+												<a href="<?php echo site_url() ?>admin/Broadcasting/create" class="btn btn-default">Create Message <span class="fa fa-pencil"></span></a>
 												
 												<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 													<span class="caret"></span>
@@ -92,7 +92,7 @@
 			"order": [],
 			"autoWidth": false,
 			"ajax": {
-				"url": '<?php echo site_url('admin/C_broadcasting/table_list'); ?>',
+				"url": '<?php echo site_url('admin/Broadcasting/table_list'); ?>',
 				"type": "POST"
 			},
 			"columns": [
@@ -177,7 +177,7 @@
 				modalConfirm(function(confirm){
 					if(confirm){
 						$.ajax({
-							url:'<?php echo site_url('admin/C_broadcasting/delete_check')?>',
+							url:'<?php echo site_url('admin/Broadcasting/delete_check')?>',
 							method:'POST',
 							data:{id_message:id},
 							success:function()
@@ -233,7 +233,7 @@
 				
 				//Ajax Load data from ajax
 				$.ajax({
-				url : "<?php echo site_url('admin/C_broadcasting/get_id_messages/')?>/" + id,
+				url : "<?php echo site_url('admin/Broadcasting/get_id_messages/')?>/" + id,
 				type: "POST",
 				dataType: "JSON",
 				success: function(data)

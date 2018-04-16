@@ -66,7 +66,7 @@
 				redirect('member/C_member');
 			}
 			if ($this->session->userdata('access') == "a"){
-				redirect('admin/C_admin');
+				redirect('admin/Admin');
 			}
 			//proses login dan validasi nya
 			if ($this->input->post('submit')) {
@@ -81,7 +81,7 @@
 					
 					//jika bernilai TRUE maka alihkan halaman sesuai dengan level nya
 					if($data->access == 'a'){
-						redirect('admin/C_admin');
+						redirect('admin/Admin');
 					}
 					else if($data->access == 'm'){
 						redirect('member/C_member');

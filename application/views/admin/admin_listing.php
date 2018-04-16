@@ -33,7 +33,7 @@
 													</div>
 													<div class="btn-group pull-right m-b-10">
 														<button class="btn btn-default" id="delete_listing">Delete listing <span class="fa fa-trash"></span></button>
-														<button class="btn btn-default" id="update_listing">Edit listing <span class="fa fa-pencil"></span></button>
+<!--														<button class="btn btn-default" id="update_listing">Edit listing <span class="fa fa-pencil"></span></button>-->
 													</div>
 													<div class="clearfix"></div>
 												</div>
@@ -80,28 +80,31 @@
 </div>		
 
 <script type="text/javascript">
+
 	$(document).ready(function(){
-		table = $('#Data_table').DataTable({ 
+		var table = $('#Data_table').DataTable({
 			// Load data for the table's content from an Ajax source
 			"order": [],
 			"autoWidth": false,
 			"ajax": {
-				"url": '<?php echo site_url('admin/C_view_listing_product/table_list'); ?>',
+				"url": '<?php echo site_url('admin/View_listing/table_list'); ?>',
 				"type": "POST"
 			},
 			"columns": [
-			{"data": "id",width:10},
-			{"data": "connect_owner",width:0},
-			{"data": "product_type",width:0},
-			{"data": "od",width:0},
-			{"data": "weight",width:0},
-			{"data": "grade_type",width:0},
-			{"data": "connect_stand",width:0},
-			{"data": "range_gen"},
-			{"data": "spcl_condition",width:0},
-			{"data": "manufact_name",width:0},
-			{"data": "country",width:0},
-			{"data": "state",width:0}
+                {"data": "id",width:10},
+                {"data": "connect_owner",width:0},
+                {"data": "product_type",width:0},
+                {"data": "od",width:0},
+                {"data": "weight",width:0},
+                {"data": "grade_type",width:0},
+                {"data": "connect_stand",width:0},
+                {"data": "range_gen"},
+                {"data": "spcl_condition",width:0},
+                {"data": "manufact_name",width:0},
+                {"data": "country",width:0},
+                {"data": "state",width:0},
+                {"data": "prod_id",visible:false},
+                {"data": "btn",width:0}
 			],
 			
 			"columnDefs": [
@@ -116,6 +119,15 @@
 				"processing": ""
 			},
 		});
+
+        /** EDIT DATA **/
+        $("#Data_table tbody").on('click', 'tr', function() {
+            var index = table.row(this).index();
+            var idproduct = table.row(index).data().prod_id;
+            var url = "<?= base_url() ?>admin/listing/edit/" + idproduct;
+
+            window.location.href = url;
+        });
 		
 		$('#checkbox').change(function(){
 			cells = table.cells().nodes();
@@ -175,7 +187,7 @@
 				modalConfirm(function(confirm){
 					if(confirm){
 						$.ajax({
-							url:'<?php echo site_url('admin/C_view_listing_product/delete_listing')?>',
+							url:'<?php echo site_url('admin/View_listing/delete_listing')?>',
 							method:'POST',
 							data:{id:id},
 							success:function()
@@ -295,7 +307,7 @@
 		
 		$('#update_product_listing').click(function(){
 			$.ajax({
-				url: "<?php echo site_url('admin/C_view_listing_product/update_listing');?>",
+				url: "<?php echo site_url('admin/View_listing/update_listing');?>",
 				type: "POST",
 				data: $('#form_listing').serialize(),
 				success:function(){
@@ -342,7 +354,7 @@
 		
 		//Ajax Load data from ajax
 		$.ajax({
-			url : "<?php echo site_url('admin/C_view_listing_product/get_id_listing/')?>/" + id,
+			url : "<?php echo site_url('admin/View_listing/get_id_listing/')?>/" + id,
 			type: "POST",
 			dataType: "JSON",
 			success: function(data)

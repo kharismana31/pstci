@@ -1,6 +1,6 @@
 <?php defined('BASEPATH')OR exit('No direct script access allowed'); 
 
-	class C_listing extends MY_Controller
+	class Listing extends MY_Controller
 	{
 		function __construct()
 		{
@@ -10,7 +10,7 @@
 			
 			//validasi jika session dengan level manager mengakses halaman ini maka akan dialihkan ke halaman manager
 			if ($this->session->userdata('access') == "a") {
-				redirect('admin/C_admin');
+				redirect('admin/Admin');
 			}
 		}            
            public function index(){
@@ -49,7 +49,7 @@
                 }else{                	
 		            $this->load->model('M_member');
 					$this->M_member->create();
-					redirect('member/C_listing_analysis');
+					redirect('member/Listing_analysis');
                 }
             }
 

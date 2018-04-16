@@ -90,7 +90,7 @@
 			"order": [],
 			"autoWidth": false,
 			"ajax": {
-				"url": '<?php echo site_url('member/C_inbox/table_list'); ?>',
+				"url": '<?php echo site_url('member/Inbox/table_list'); ?>',
 				"type": "POST"
 			},
 			"columns": [
@@ -174,7 +174,7 @@
 				modalConfirm(function(confirm){
 					if(confirm){
 						$.ajax({
-							url:'<?php echo site_url('member/C_inbox/delete_check')?>',
+							url:'<?php echo site_url('member/Inbox/delete_check')?>',
 							method:'POST',
 							data:{id_message:id},
 							success:function()
@@ -230,7 +230,7 @@
 		
 		//Ajax Load data from ajax
 		$.ajax({
-			url : "<?php echo site_url('member/C_inbox/get_id_messages/')?>/" + id,
+			url : "<?php echo site_url('member/Inbox/get_id_messages/')?>/" + id,
 			type: "POST",
 			dataType: "JSON",
 			success: function(data)

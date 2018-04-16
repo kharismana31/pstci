@@ -86,7 +86,7 @@
 			"order": [],
 			"autoWidth": false,
 			"ajax": {
-				"url": '<?php echo site_url('admin/C_approval/table_list'); ?>',
+				"url": '<?php echo site_url('admin/Approval/table_list'); ?>',
 				"type": "POST"
 			},
 			"columns": [
@@ -174,7 +174,7 @@
 				modalConfirm(function(confirm){
 					if(confirm){
 						$.ajax({
-							url:'<?php echo site_url('admin/C_approval/reject_product')?>',
+							url:'<?php echo site_url('admin/Approval/reject_product')?>',
 							method:'POST',
 							data:{id:id},
 							success:function()
@@ -254,7 +254,7 @@
 			}
 			else{
 				$.ajax({
-					url : "<?php echo site_url('admin/C_approval/approve_product/')?>",
+					url : "<?php echo site_url('admin/Approval/approve_product/')?>",
 					method:'POST',
 					data:{id:id},
 					success:function()

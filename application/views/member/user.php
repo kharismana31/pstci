@@ -31,7 +31,7 @@
 								<p>
 									Add a pipe to your listing and get started selling it
 								</p>
-								<a class="btn btn-cons btn-primary" href="<?php echo site_url('member/C_listing') ?>">Sell a Pipe Now</a>
+								<a class="btn btn-cons btn-primary" href="<?php echo site_url('member/Listing') ?>">Sell a Pipe Now</a>
 							</div>
 						</div>
 						<div class="card-footer clearfix">

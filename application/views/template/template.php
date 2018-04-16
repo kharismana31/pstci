@@ -70,28 +70,45 @@
 				if(!empty($this->session->userdata('access') == 'a')){
 				?>
 				<div class="pull-left m-t-20 m-r-10">
-					<a href="admin_search.html" class="text-white"><span class="pg-search"></span> Search</a>
+					<a href="<?= base_url('public/C_public/search') ?>" class="text-white"><span class="pg-search"></span> Search</a>
 				</div>
 				
 				<div class="pull-left">
 					<a class="dropdown-default btn-dropdown-toggle p-b-10 p-l-5 p-t-20 p-r-15 text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="">Administrative <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="<?php echo site_url('admin/C_admin') ?>">Admin</a></li>
-						<li><a href="<?php echo site_url('admin/C_user') ?>">User Registration</a></li>
-						<li><a href="<?php echo base_url('admin/C_statistic');?>">Site Statistic</a></li>
-						<li><a href="<?php echo base_url('admin/C_approval');?>">Approval to Publish</a></li>
-						<li><a href="<?php echo site_url('admin/C_broadcasting') ?>">Broadcasting</a></li>
-						<li><a href="<?php echo base_url('admin/C_registered');?>">Registered User</a></li>
+						<li><a href="<?php echo site_url('admin/Admin') ?>">Admin</a></li>
+						<li><a href="<?php echo site_url('admin/User') ?>">User Registration</a></li>
+						<li><a href="<?php echo base_url('admin/Statistic');?>">Site Statistic</a></li>
+						<li><a href="<?php echo site_url('admin/Broadcasting') ?>">Broadcasting</a></li>
+						<li><a href="<?php echo base_url('admin/Registered');?>">Registered User</a></li>
 					</ul>
 				</div>
 				<div class="pull-left">
 					<a class="dropdown-default btn-dropdown-toggle p-b-10 p-l-5 p-t-20 p-r-15 text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="">Listing <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="<?php echo site_url('admin/C_listing')?>">Entry a Product</a></li>
-						<li><a href="<?php echo site_url('admin/C_view_listing_product');?>">View Products (by customer)</a></li>
-						<li><a href="admin_mill_entry.html">Mill Entry Form</a></li>
+						<li><a href="<?php echo site_url('admin/Listing')?>">Entry a Product</a></li>
+						<li><a href="<?php echo site_url('admin/View_listing');?>">View Products (by customer)</a></li>
+                        <li><a href="<?php echo base_url('admin/Approval');?>">Approval to Publish
+                                <?php
+                                $ci =& get_instance();
+                                $ci->load->model('m_listing');
+                                ?>
+                                <label class="label label-danger"><?= $ci->m_listing->active_record() ?></label>
+                            </a>
+                        </li>
+<!--						<li><a href="admin_mill_entry.html">Mill Entry Form</a></li>-->
 					</ul>
 				</div>
+                    <div class="pull-left">
+                        <a class="dropdown-default btn-dropdown-toggle p-b-10 p-l-5 p-t-20 p-r-15 text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="">Master <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="<?php echo site_url('admin/Manufacturer')?>">Main Mill</a></li>
+                        </ul>
+                    </div>
+
+                    <!--
+                    MEMBER MENUU
+                    -->
 				<?php 
 				}
 				elseif(!empty($this->session->userdata('access') == 'm')){
@@ -105,14 +122,14 @@
 					<a class="dropdown-default btn-dropdown-toggle p-b-10 p-l-5 p-t-20 p-r-15 text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="">Message <span class="caret"></span></a>
 					<ul class="dropdown-menu text-master" role="menu">
 						<li><a href="<?php echo site_url('member/C_message') ?>"><span class="pg-mail p-r-5"></span> Sent a Message</a></li>
-						<li><a href="<?php echo site_url('member/C_inbox') ?>"><span class="pg-inbox p-r-5"></span> View Inbox</a></li>
+						<li><a href="<?php echo site_url('member/Inbox') ?>"><span class="pg-inbox p-r-5"></span> View Inbox</a></li>
 					</ul>
 				</div>
 				<div class="pull-left">
 					<a class="dropdown-default btn-dropdown-toggle p-b-10 p-l-5 p-t-20 p-r-15 text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="">Manage your products <span class="caret"></span></a>
 					<ul class="dropdown-menu text-master" role="menu">
-						<li><a href="<?php site_url() ?>C_listing_analysis"><span class="fa fa-area-chart p-r-5"></span> View Listing Analysis</a></li>
-						<li><a href="<?php site_url() ?>C_listing_product"><span class="fa fa-file p-r-5"></span> View my Products</a></li>
+						<li><a href="<?php site_url() ?>Listing_analysis"><span class="fa fa-area-chart p-r-5"></span> View Listing Analysis</a></li>
+						<li><a href="<?php site_url() ?>Listing_product"><span class="fa fa-file p-r-5"></span> View my Products</a></li>
 					</ul>
 				</div>
 				<?php
@@ -152,28 +169,19 @@
 								</span>
 							</button>
 							<ul class="dropdown-menu profile-dropdown" role="menu">
-								<li>
-									<a href="#"><i class="pg-settings_small"></i> Settings</a>
-								</li>
-								<li>
-									<a href="#"><i class="pg-outdent"></i> Feedback</a>
-								</li>
-								<li>
-									<a href="#"><i class="pg-signals"></i> Help</a>
-								</li>
 								
 								<?php 
 									if(!empty($this->session->userdata('access') == 'a')){
 									?>
 									<li>
-										<a href="<?php echo site_url('admin/C_inbox'); ?>"><i class="pg-mail"></i><span class="number-badge badge badge-dark"></span> Message</a>
+										<a href="<?php echo site_url('admin/Inbox'); ?>"><i class="pg-mail"></i><span class="number-badge badge badge-dark"></span> Message</a>
 									</li>
 									<?php
 									}
 									elseif(!empty($this->session->userdata('access') == 'm')){
 									?>
 									<li>
-										<a href="<?php echo site_url('member/C_inbox'); ?>"><i class="pg-mail"></i><span class="number-badge badge badge-dark"></span> Message</a>
+										<a href="<?php echo site_url('member/Inbox'); ?>"><i class="pg-mail"></i><span class="number-badge badge badge-dark"></span> Message</a>
 									</li>									
 									<?php
 									}
@@ -193,18 +201,7 @@
 									</li>
 									<?php 
 									}
-									else{
 									?>
-									<li class="bg-master-lighter">
-										
-										<a href="<?php echo site_url('C_auth/register')?>" class="clearfix">
-											<span class="pull-left">Register</span>
-											<span class="pull-right"><i class="pg-power"></i></span>
-										</a>
-									</li>
-									<?php 
-									}
-								?>
 							</ul>
 						</div>
 					</div>
@@ -294,7 +291,7 @@
 			if(!empty($this->session->userdata('access') == 'a')){
 			?>
 			
-			url = '<?php echo site_url('admin/C_broadcasting/admin_number'); ?>';
+			url = '<?php echo site_url('admin/Broadcasting/admin_number'); ?>';
 			
 			<?php 
 			}

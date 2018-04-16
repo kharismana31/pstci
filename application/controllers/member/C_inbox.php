@@ -1,7 +1,7 @@
 <?php 
 	defined('BASEPATH') OR exit('No direct script access allowed');
 	
-	class C_inbox extends MY_Controller
+	class Inbox extends MY_Controller
 	{
 		public function __construct()
 		{
@@ -11,7 +11,7 @@
 			$this->cekLogin();
 			
 			if ($this->session->userdata('access') == "a") {
-				redirect('admin/C_admin');
+				redirect('admin/Admin');
 			}
 		}
 		

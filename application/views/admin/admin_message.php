@@ -1,7 +1,7 @@
 <div class="bg-master-lightest">
 	<div class="container-fluid sm-p-l-20 sm-p-r-20 p-t-10 p-b-25">
 		<h3 class="m-l-60">Create Message</h3><hr />
-		<form id="form-login" role="form" method="post" action="<?php echo site_url('admin/C_broadcasting/send_message') ?>">
+		<form id="form-login" role="form" method="post" action="<?php echo site_url('admin/Broadcasting/send_message') ?>">
 			<div class="col-md-4">
 				<div class="panel panel-bordered bg-info-lighter">
 					<div class="panel-heading">
@@ -9,7 +9,7 @@
 							Choose a contact first 
 						</div>
 						<div class="btn-group pull-right m-b-10">
-							<a type="button" class="btn btn-default btn-sm" href="<?php echo site_url('admin/C_broadcasting/inbox') ?>">View Inboxes <span class="pg-inbox"></span></a>
+							<a type="button" class="btn btn-default btn-sm" href="<?php echo site_url('admin/Broadcasting/inbox') ?>">View Inboxes <span class="pg-inbox"></span></a>
 							<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
 								<span class="caret"></span>
 							</button>

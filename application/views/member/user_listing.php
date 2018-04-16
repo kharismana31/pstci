@@ -40,7 +40,7 @@
                                 <p>
                                   Add a pipe to your listing and get started selling it
                                 </p>
-                                <a class="btn btn-cons btn-primary" href="<?php echo base_url('member/C_listing');?>">Add a Pipe Now</a>
+                                <a class="btn btn-cons btn-primary" href="<?php echo base_url('member/Listing');?>">Add a Pipe Now</a>
                               </div>
                             </div>
                             <div class="card-footer clearfix">
@@ -66,7 +66,7 @@
                               <p>
                                 Product Type : Pup Joints<br>
                                 OD : 4.3 <br>
-                                Weight : 500 grams <a href="C_listing.php" class="pull-right text-complete">View Individual</a>
+                                Weight : 500 grams <a href="Listing.php" class="pull-right text-complete">View Individual</a>
                               </p>
                             </div>
                                 <div class="btn-group btn-group-justified">
