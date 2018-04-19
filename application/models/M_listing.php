@@ -33,6 +33,18 @@
 			return $this->db->get();
 		}
 		
+		public function getProductType()
+		{
+			$this->db->select('id,name');
+			return $this->db->get('product_types');
+		}
+
+		public function getOD()
+		{
+			$this->db->select('id_product_type,dm_od_label');
+			return $this->db->get('dimensions');
+		}
+
 		public function update($where, $data)
 		{
 			$this->db->update('product_listing', $data, $where);

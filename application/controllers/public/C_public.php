@@ -20,8 +20,11 @@
 
 		public function search()
 		{
-			$data['list_product'] = $this->M_listing->get
-			$this->template->load('template/template','public/public_search');
+			$data['list_product'] = $this->M_listing->getProductType()->result_array();
+			$data['list_od'] = $this->M_listing->getOD()->result_array();
+			/*print_r($data);
+			die();*/
+			$this->template->load('template/template','public/public_search',$data);
 		}
 		
 		public function result_search()

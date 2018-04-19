@@ -9,12 +9,13 @@
 							<label>Product Type</label>
 							<select class="full-width" data-init-plugin="select2" id="product" name="product">
 								<option value="all">All Product Type</option>
-								
-								<option value="conductor">Conductor</option>
-								<option value="casing">Casing</option>
-								<option value="tubing">Tubing</option>
-								<option value="popjoints">Pup Joints</option>
-								<option value="couplings">Couplings</option>
+								<?php 
+									$n=1;
+									foreach ($list_product as $product) {
+										echo "<option value=\"".$product['name']."\" id=\"".$n."\">".$product['name']."</option>";
+										$n = $n+1;
+									}
+								?>
 							</select>
 						</div>
 					</div>
@@ -44,9 +45,11 @@
                             <label>OD</label>
                             <select class="full-width" data-init-plugin="select2" id="od" name="od">
                             	<option value="0"></option>
-                                <option value="2.0">2.0</option>
-                                <option value="3.0">3.0</option>
-                                <option value="3.5">3.5</option>
+                                <?php
+                                	foreach ($list_od as $od) {
+                                		echo "<option>".$od['dm_od_label']."</option>";
+                                	}
+                                ?>
 							</select>
 						</div>
 					</div>
@@ -88,7 +91,7 @@
 		</div>
 	</div>
 </div>
-
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#product").change(function() {
