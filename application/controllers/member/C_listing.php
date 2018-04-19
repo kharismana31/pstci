@@ -1,6 +1,6 @@
 <?php defined('BASEPATH')OR exit('No direct script access allowed'); 
 
-	class Listing extends MY_Controller
+	class C_listing extends MY_Controller
 	{
 		function __construct()
 		{

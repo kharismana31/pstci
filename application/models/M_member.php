@@ -33,7 +33,13 @@
     function show_user(){
         $this->db->where('access','a');
         return $this->db->get('users');
-    }    
-        
-        
-	}
+    }
+
+    function detail_user($id){
+        $this->db->where('access','a');
+        $this->db->where('access','a');
+        return $this->db->get('users');
+    }
+
+
+    }

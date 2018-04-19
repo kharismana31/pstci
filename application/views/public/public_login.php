@@ -36,7 +36,8 @@
 							</div>
 						</div>
 						<!-- END Form Control-->
-						<button type="submit" name="submit" class="btn btn-primary btn-cons m-t-10" value="form-login">Sign in</button>
+                        <button type="submit" name="submit" class="btn btn-primary btn-cons m-t-10" value="form-login">Sign in</button>
+                        <a href="<?= site_url('C_auth/register') ?>" style="background:#a32828;border-color:#a32828" class="btn btn-danger btn-cons m-t-10" value="form-login">Register Now</a>
 					</form>
 				</div>
 				<!--END Login Form-->

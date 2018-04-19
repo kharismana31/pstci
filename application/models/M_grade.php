@@ -9,4 +9,9 @@
 class M_grade extends EloquentModel
 {
     protected $table = 'grades';
+
+    public function applications()
+    {
+        return $this->hasMany('M_grade_application', 'id_grade', 'id');
+    }
 }

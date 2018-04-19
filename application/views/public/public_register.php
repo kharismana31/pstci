@@ -36,16 +36,19 @@
 					</div>
 					<div class="form-group form-group-default form-group-default-select2 required">
 						<label>Country</label>
-						<select class="full-width" data-init-plugin="select2" required name="country">
-							<optgroup label="Asia">
-								<option>Indonesia</option>
-								<option>Malaysia</option>
-							</optgroup>
-							<optgroup label="Europe">
-								<option>Holland</option>
-								<option>Germany</option>
-								<option>Argentina</option>
-							</optgroup>
+						<select class="full-width" data-init-plugin="select2" required name="country" onchange="changeCC(this)">
+                            <?php foreach($countries as $country): ?>
+                                <option data-cc="<?= $country->phonecode ?>" value="<?= $country->name ?>"><?= $country->name ?></option>
+                            <?php endforeach; ?>
+<!--							<optgroup label="Asia">-->
+<!--								<option>Indonesia</option>-->
+<!--								<option>Malaysia</option>-->
+<!--							</optgroup>-->
+<!--							<optgroup label="Europe">-->
+<!--								<option>Holland</option>-->
+<!--								<option>Germany</option>-->
+<!--								<option>Argentina</option>-->
+<!--							</optgroup>-->
 						</select>
 					</div>
 					<div class="row">
@@ -92,3 +95,10 @@
 		<div class="col-md-5"></div>
 	</div>
 </div>
+
+<script>
+    function changeCC(that) {
+        var cc = $(that).find(':selected').data('cc');
+        $('input[name=countrycode]').val(cc);
+    }
+</script>

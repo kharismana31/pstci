@@ -57,9 +57,10 @@
 		public function login()
 		{
 			// Security Captcha
-			if (!empty($_SESSION['auth'])){
-				redirect('C_auth/captcha');
-			}
+            //TODO: UNCOMMENT INI
+//			if (!empty($_SESSION['auth'])){
+//				redirect('C_auth/captcha');
+//			}
 			
 			//melakukan pengalihan halaman sesuai dengan levelnya
 			if ($this->session->userdata('access') == "m"){
@@ -124,7 +125,9 @@
 		
 		public function register()
 		{
-			$this->template->load('template/template','public/public_register');
+		    $this->load->model('m_country');
+		    $data['countries'] = $this->m_country->getAll()->result();
+			$this->template->load('template/template','public/public_register', $data);
 		}
 		
 		public function add_register(){
@@ -168,7 +171,7 @@
 			$ver2 = md5($ver);
 			
 			$config = array();
-			$config['charset']      = 'utf-8';
+/*			$config['charset']      = 'utf-8';
 			$config['useragent']    = 'Codeigniter';
 			$config['protocol']     = "smtp";
 			$config['mailtype']     = "html";
@@ -177,18 +180,32 @@
 			$config['smtp_timeout'] = "400";
 			$config['smtp_user']    = "inopstnewest@gmail.com";
 			$config['smtp_pass']    = "inouser123";
-			$config['crlf']         = "\r\n"; 
+			$config['crlf']         = "\r\n";
 			$config['newline']      = "\r\n";
-			$config['wordwrap']     = TRUE;
-			
+			$config['wordwrap']     = TRUE;*/
+
+            $config['charset']      = 'utf-8';
+            $config['useragent']    = 'Codeigniter';
+            $config['protocol']     = "smtp";
+            $config['mailtype']     = "html";
+            $config['smtp_host']    = "smtp.sendgrid.net";
+            $config['smtp_port']    = "587";
+            $config['smtp_timeout'] = "400";
+            $config['smtp_user']    = "yogak5";
+            $config['smtp_pass']    = "KopiEnak123!@#";
+            $config['crlf']         = "\r\n";
+            $config['newline']      = "\r\n";
+            $config['mailtype']      = "html";
+            $config['wordwrap']     = TRUE;
+
+            $dataemail['url'] = site_url("C_auth/verification/".$ver2.$pnumber.$this->generate());
+            $emailnya = $this->load->view('template/email', $dataemail, true);
+
 			$this->email->initialize($config);
 			$this->email->from($config['smtp_user']);
 			$this->email->to($email);
 			$this->email->subject("Verifikasi Akun");
-			$this->email->message(
-			"thank you for registration, to verify please click the link below<br><br>".
-			site_url("C_auth/verification/".$ver2.$pnumber.$this->generate()."")
-			);
+			$this->email->message($emailnya);
 			
 			if($this->email->send()){
 				// echo "Berhasil melakukan registrasi, silahkan cek email kamu";

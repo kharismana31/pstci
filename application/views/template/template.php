@@ -42,8 +42,9 @@
 	<link href="<?php echo base_url()?>assets/assets/plugins/datatables-responsive/css/datatables.responsive.css" rel="stylesheet" type="text/css" media="screen" />
 	
 	<link href="<?php echo base_url()?>assets/pages/css/pages-icons.css" rel="stylesheet" type="text/css">
-	<link class="main-stylesheet" href="<?php echo base_url()?>assets/pages/css/pages.css" rel="stylesheet" type="text/css" />
-	
+    <link class="main-stylesheet" href="<?php echo base_url()?>assets/pages/css/pages.css" rel="stylesheet" type="text/css" />
+    <link class="main-stylesheet" href="<?php echo base_url()?>assets/pages/css/pages.css" rel="stylesheet" type="text/css" />
+
 	<link class="main-stylesheet" href="<?php echo base_url()?>assets/assets/plugins/animate.min.css" rel="stylesheet" type="text/css" />
 	
 	<script src="<?php echo base_url()?>assets/assets/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
@@ -103,6 +104,9 @@
                         <a class="dropdown-default btn-dropdown-toggle p-b-10 p-l-5 p-t-20 p-r-15 text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="">Master <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="<?php echo site_url('admin/Manufacturer')?>">Main Mill</a></li>
+                            <li><a href="<?php echo site_url('admin/Connection')?>">Connection</a></li>
+                            <li><a href="<?php echo site_url('admin/Grade')?>">Grade</a></li>
+                            <li><a href="<?php echo site_url('admin/Dimension')?>">Dimension</a></li>
                         </ul>
                     </div>
 
@@ -176,6 +180,9 @@
 									<li>
 										<a href="<?php echo site_url('admin/Inbox'); ?>"><i class="pg-mail"></i><span class="number-badge badge badge-dark"></span> Message</a>
 									</li>
+                                        <li>
+                                            <a href="<?php echo site_url('admin/Setting'); ?>"><i class="pg-settings"></i> Settings</a>
+                                        </li>
 									<?php
 									}
 									elseif(!empty($this->session->userdata('access') == 'm')){
@@ -285,7 +292,7 @@
 	?>
 	
 	<script type="text/javascript">
-		
+		var base_url = "<?= base_url() ?>";
 		var url;
 		<?php 
 			if(!empty($this->session->userdata('access') == 'a')){

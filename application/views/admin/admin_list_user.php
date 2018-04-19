@@ -34,13 +34,18 @@
 													<div class="btn-group pull-right m-b-10">
 														<button class="btn btn-default" id="delete_check"><span class="fa fa-trash"></span> Delete User</button>
 														<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-															<span class="caret"></span>
+                                                            <span class="fa fa-search"></span> Filter By
 														</button>
-														<ul class="dropdown-menu" role="menu">
-															<li><a href="#">Settings</a>
-															</li>
-															<li><a href="#">Help</a>
-															</li>
+														<ul class="dropdown-menu" role="menu" style="padding:1em">
+                                                            <li>
+                                                                <input type="radio" value="3" name="filters">Company
+                                                            </li>
+                                                            <li>
+                                                                <input type="radio" value="5" name="filters">Country <br>
+                                                            </li>
+                                                            <li>
+                                                                <input type="radio" value="4" name="filters">Type
+                                                            </li>
 														</ul>
 													</div>
 													<div class="clearfix"></div>
@@ -93,6 +98,7 @@
 
 
 <script type="text/javascript">
+    var table;
 	$(document).ready(function(){
 		table = $('#Data_table').DataTable({ 
 			// Load data for the table's content from an Ajax source
@@ -238,6 +244,21 @@
 	{
 		table.ajax.reload(null,false); //reload datatable ajax 
 	}
+
+    $( ".dataTables_filter input" ).on( 'keyup change',function() {
+        var target = $('input[type=radio][name=filters]:checked').val();
+        table
+            .column(target)
+            .search(this.value)
+            .draw();
+        //clear all form input values
+        $('.filter').val('');
+    });
+
+    // $('input[name="search"]').on('change', function(){
+    //
+    //
+    // });
 </script>
 
 <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="confirm-modal">

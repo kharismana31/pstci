@@ -12,6 +12,13 @@
 				redirect('member/C_member');
 			}
 		}
+
+        public function edit($id)
+        {
+            //TODO: REGISTER USER EA
+//            $data['user'] =
+//            $this->template->load('template/template', 'admin/admin_user_edit', $data);
+		}
 		
 		public function index(){
 			$this->template->load('template/template','admin/admin_list_user');

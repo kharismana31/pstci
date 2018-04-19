@@ -48,6 +48,20 @@ class Api extends MY_Controller
         return print_r($this->datatables->generate());
     }
 
+    public function get_wall_thickness()
+    {
+        $this->datatables->select('dm_wt_imperial, dm_wt_metric');
+        $this->datatables->where('dm_od_label',$this->input->post('od'));
+        $this->datatables->where('dm_wt_imperial != ""');
+
+        $this->datatables->add_column('dm_wt_imperial', "$1", 'dm_wt_imperial');
+        $this->datatables->add_column('dm_wt_metric', "$1", 'dm_wt_metric');
+        $this->datatables->add_column('btn', "<button class='btn btn-success' class='btn-old'><i class='fa fa-check'></i></button>", 'btn');
+
+        $this->datatables->from('dimensions');
+        return print_r($this->datatables->generate());
+    }
+
     public function get_grade_name()
     {
         switch ($this->input->post('grade_type')):
@@ -87,16 +101,61 @@ class Api extends MY_Controller
         $this->toJson(['specialities' => $data]);
     }
 
+    public function get_grade()
+    {
+        $this->datatables->select('name, type, standard, owner, min_yl_metric, min_yl_imperial');
+        $this->datatables->like("product_type", $this->input->post('product_type'));
+
+        $this->datatables->add_column('name', "$1", 'name');
+        $this->datatables->add_column('type', "$1", 'type');
+        $this->datatables->add_column('min_yl_metric', "$1", 'min_yl_metric');
+        $this->datatables->add_column('min_yl_imperial', "$1", 'min_yl_imperial');
+        $this->datatables->add_column('standard', "$1", 'standard');
+        $this->datatables->add_column('owner', "$1", 'owner');
+        $this->datatables->add_column('btn', "<button class='btn btn-success' class='btn-old'><i class='fa fa-check'></i></button>", 'btn');
+
+        $this->datatables->from('grades');
+        return print_r($this->datatables->generate());
+    }
+
+    public function get_connection()
+    {
+        $this->datatables->select('name, type, standard, owner, additional_feature');
+
+        $this->datatables->add_column('name', "$1", 'name');
+        $this->datatables->add_column('type', "$1", 'type');
+        $this->datatables->add_column('standard', "$1", 'standard');
+        $this->datatables->add_column('owner', "$1", 'owner');
+        $this->datatables->add_column('additional_feature', "$1", 'additional_feature');
+        $this->datatables->add_column('btn', "<button class='btn btn-success' class='btn-old'><i class='fa fa-check'></i></button>", 'btn');
+
+        $this->datatables->from('connections');
+        return print_r($this->datatables->generate());
+    }
+
+    public function get_manufacturer()
+    {
+        $this->datatables->select('name, country, year');
+
+        $this->datatables->add_column('name', "$1", 'name');
+        $this->datatables->add_column('country', "$1", 'country');
+        $this->datatables->add_column('year', "$1", 'year');
+        $this->datatables->add_column('btn', "<button class='btn btn-success' class='btn-old'><i class='fa fa-check'></i></button>", 'btn');
+
+        $this->datatables->from('manufacturers');
+        return print_r($this->datatables->generate());
+    }
+
     public function get_connection_name()
     {
         switch ($this->input->post('con_owner')):
-            case 'api':
+            case 'API':
                 $data = M_connection::where('owner', 'API')
                         ->where('type', $this->input->post('con_type'))
                         ->orderBy('name', 'ASC')->get();
                 $this->toJson(['connection' => $data]);
                 break;
-            case 'proprietary':
+            case 'Proprietary':
                 $data = M_connection::where('owner', '!=', 'API')
                         ->where('type', $this->input->post('con_type'))
                         ->orderBy('name', 'ASC')->get();
@@ -113,7 +172,7 @@ class Api extends MY_Controller
 
     public function get_similar_product()
     {
-        $this->datatables->select('product_type, od, price');
+        $this->datatables->select('product_type, od, price, api_pro_1');
         $this->datatables->where('id !=',$this->input->post('id'));
         $this->datatables->where('od',$this->input->post('od'));
         $this->datatables->where('api_pro_1',$this->input->post('api_pro_1'));
@@ -124,6 +183,7 @@ class Api extends MY_Controller
 
         $this->datatables->add_column('product_type', "$1", 'product_type');
         $this->datatables->add_column('od', "$1", 'od');
+        $this->datatables->add_column('grade', "$1", 'api_pro_1');
         $this->datatables->add_column('price', "$$1", 'price');
 
         $this->datatables->from('product_listing');

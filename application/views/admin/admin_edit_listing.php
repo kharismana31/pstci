@@ -113,15 +113,16 @@
                                                                     <div class="col-md-6">
                                                                         <div class="form-group form-group-default form-group-default-select2 required range">
                                                                             <label>Range</label>
-                                                                            <select class="full-width" data-init-plugin="select2" name="range">
+                                                                            <select class="full-width" data-init-plugin="select2" name="range" onchange="toogleRange(this)">
                                                                                 <option value="R1">R1</option>
                                                                                 <option value="R2">R2</option>
                                                                                 <option value="R3">R3</option>
+                                                                                <option value="OTHER">OTHER</option>
                                                                             </select>
                                                                         </div>
                                                                         <div class="form-group form-group-default required range-manual">
-                                                                            <label>Range</label>
-                                                                            <input type="text" class="form-control" name="range-manual" placeholder="Specify Length in Meter / Feet" />
+                                                                            <label>Range Manual</label>
+                                                                            <input type="text" class="form-control" name="range-manual" placeholder="Specify Length in Meter / Feet" value="<?= $listing->range_gen ?>"/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
@@ -136,9 +137,9 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-12">
-                                                                        <div class="form-group">
-                                                                            <a href="javascript:void(0)" onclick="toogleRange()" class="btn-range-manual">Input Range manual</a>
-                                                                        </div>
+<!--                                                                        <div class="form-group">-->
+<!--                                                                            <a href="javascript:void(0)" onclick="toogleRange()" class="btn-range-manual">Input Range manual</a>-->
+<!--                                                                        </div>-->
                                                                     </div>
                                                                 </div>
 
@@ -202,7 +203,7 @@
 
                                                                         <div class="form-group form-group-default required api1_manual">
                                                                             <label>API/Propietary</label>
-                                                                            <input type="text" class="form-control" name="api1_manual" placeholder="API/Propiertary" value="<?= $listing->api_pro_1 ?>"/>
+                                                                            <input type="text" class="form-control" name="api1_manual" placeholder="API/Propiertary"/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
@@ -214,9 +215,9 @@
                                                                         <div class="form-group p-l-10 b-t b-dashed b-grey p-t-5">
                                                                             <label>Sour Classification</label>
                                                                             <div class="radio radio-success">
-                                                                                <input type="radio" id="sour" name="gradesour" value="sour"/>
+                                                                                <input type="radio" id="sour" name="gradesour" value="sour" <?= ($listing->sour_class == 'sour') ? 'checked' : '' ?>/>
                                                                                 <label for="sour">Sour</label>
-                                                                                <input type="radio" id="nonsour" name="gradesour" value="nonsour"/>
+                                                                                <input type="radio" id="nonsour" name="gradesour" value="nonsour"  <?= ($listing->sour_class == 'nonsour') ? 'checked' : '' ?>/>
                                                                                 <label for="nonsour">Non-Sour</label>
                                                                             </div>
                                                                         </div>
@@ -550,24 +551,21 @@
         $('input[name="weight"').val("<?= $listing->weight ?>");
         var range = "<?= $listing->range_gen ?>";
         if(range=="R1" || range == "R2" || range == "R3"){
-            $(".btn-range-manual").hide();
             $(".range-manual").hide();
             $('select[name="range"]').val(range);
         } else {
-            $(".range").hidden();
-            $('input[name="range"]').val(range);
+            $('select[name="range"]').val("OTHER").trigger('change');
+            $(".range-manual").show();
+            $('input[name="range_manual"]').val(range);
         }
-
         /**
          *  GRADE tab
          **/
         $('input[name="yield"]').val("<?= $listing->yield ?>");
         $('input[name="optiongrade"][value="<?= $listing->grade_type ?>"]').prop('checked', true)
         changeGradeName();
-        if("<?= $listing->sour_class ?>" == 'sour'){
-            $('[name="gradesour"][value="sour"]').prop('checked', true); //Men-deselect GRADE TYPE
-        } else if ("<?= $listing->sour_class ?>" == 'nonsour'){
-            $('[name="gradesour"][value="nonsour"]').prop('checked', true); //Men-deselect GRADE TYPE
+        if("<?= $listing->grade_type ?>" == "other"){
+            $('.api1_manual').val("<?= $listing->api_pro_1 ?>");
         }
 
         /**
@@ -586,15 +584,14 @@
     });
 
 
-    function toogleRange() {
-        if ($(".range").is(':hidden')) {
-            $(".range").show();
-            $(".range-manual").hide();
-            $('.btn-range-manual').text('Input Range manual');
-        } else {
-            $(".range").hide();
+    function toogleRange(that) {
+        var pilihan = $(that).find(':selected').val();
+        if(pilihan == "OTHER"){
+            // $(".range").hide();
             $(".range-manual").show();
-            $('.btn-range-manual').text('Toggle select Range');
+        } else {
+            // $(".range").show();
+            $(".range-manual").hide();
         }
     }
 
@@ -637,17 +634,26 @@
             $(".range").show();
             $(".range-manual").hide();
 
-            if($(that).find(":selected").text() == 'CASING' || $(that).find(":selected").text() == 'TUBING'){
+            if($(that).find(":selected").text() == 'CASING'){
                 $('select[name="range"]').html('');
                 $('select[name="range"]').append(new Option("R1", "R1", false, false)).trigger('change');
                 $('select[name="range"]').append(new Option("R2", "R2", false, false)).trigger('change');
                 $('select[name="range"]').append(new Option("R3", "R3", false, false)).trigger('change');
 
-            } else {
+            } else if($(that).find(":selected").text() == 'TUBING') {
+                $('select[name="range"]').html('');
+                $('select[name="range"]').append(new Option("R1", "R1", false, false)).trigger('change');
+                $('select[name="range"]').append(new Option("R2", "R2", false, false)).trigger('change');
+                $('select[name="range"]').append(new Option("R4", "R4", false, false)).trigger('change');
+            } else if($(that).find(":selected").text() == 'CONDUCTOR') {
                 $('select[name="range"]').html('');
                 $('select[name="range"]').append(new Option("R1", "R1", false, false)).trigger('change');
                 $('select[name="range"]').append(new Option("R2", "R2", false, false)).trigger('change');
                 $('select[name="range"]').append(new Option("R3", "R3", false, false)).trigger('change');
+                $('select[name="range"]').append(new Option("OTHER", "OTHER", false, false)).trigger('change');
+            }  else if($(that).find(":selected").text() == 'PUP JOINTS') {
+                $('select[name="range"]').html('');
+                $('select[name="range"]').append(new Option("OTHER", "OTHER", false, false)).trigger('change');
             }
         }
 
@@ -861,6 +867,7 @@
     function checkSourAndChromeContent(that) {
         $('input[name="yield"]').val($(that).find(':selected').data('yield')); //select option
         var idgrade = $(that).find(':selected').data('id');
+        console.log($(that).find(':selected').text());
         $.ajax({
             url: 		base_url + "api/get_sour_and_chromecontent",
             method: 	"POST",

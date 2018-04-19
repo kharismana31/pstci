@@ -250,18 +250,18 @@
                 fill: false,
                 borderColor: '#ff6384',
                 data: [
-                    0,
-                    3,
-                    0,
-                    2,//
-                    0,
-                    0,
-                    0,
-                    0,//
-                    0,
-                    0,
-                    0,
-                    0//
+                    <?= $total['stats'][1]['sum_listing'] ?>,
+                    <?= $total['stats'][2]['sum_listing'] ?>,
+                    <?= $total['stats'][3]['sum_listing'] ?>,
+                    <?= $total['stats'][4]['sum_listing'] ?>,
+                    <?= $total['stats'][5]['sum_listing'] ?>,
+                    <?= $total['stats'][6]['sum_listing'] ?>,
+                    <?= $total['stats'][7]['sum_listing'] ?>,
+                    <?= $total['stats'][8]['sum_listing'] ?>,
+                    <?= $total['stats'][9]['sum_listing'] ?>,
+                    <?= $total['stats'][10]['sum_listing'] ?>,
+                    <?= $total['stats'][11]['sum_listing'] ?>,
+                    <?= $total['stats'][12]['sum_listing'] ?>
                 ],
                 fill: false,
             }, {
@@ -269,90 +269,90 @@
                 fill: false,
                 borderColor: '#36a2eb',
                 data: [
-                    0,
-                    1,
-                    0,
-                    1,//
-                    0,
-                    0,
-                    0,
-                    0,//
-                    0,
-                    0,
-                    0,
-                    0//
+                    <?= $total['stats'][1]['sum_regis'] ?>,
+                    <?= $total['stats'][2]['sum_regis'] ?>,
+                    <?= $total['stats'][3]['sum_regis'] ?>,
+                    <?= $total['stats'][4]['sum_regis'] ?>,
+                    <?= $total['stats'][5]['sum_regis'] ?>,
+                    <?= $total['stats'][6]['sum_regis'] ?>,
+                    <?= $total['stats'][7]['sum_regis'] ?>,
+                    <?= $total['stats'][8]['sum_regis'] ?>,
+                    <?= $total['stats'][9]['sum_regis'] ?>,
+                    <?= $total['stats'][10]['sum_regis'] ?>,
+                    <?= $total['stats'][11]['sum_regis'] ?>,
+                    <?= $total['stats'][12]['sum_regis'] ?>
                 ],
             }, {
                 label: "No of View",
                 fill: false,
                 borderColor: '#1eba6f',
                 data: [
-                    0,
-                    10,
-                    0,
-                    0,//
-                    3,
-                    4,
-                    6,
-                    0,//
-                    0,
-                    0,
-                    0,
-                    0//
+                    <?= $total['stats'][1]['sum_view'] ?>,
+                    <?= $total['stats'][2]['sum_view'] ?>,
+                    <?= $total['stats'][3]['sum_view'] ?>,
+                    <?= $total['stats'][4]['sum_view'] ?>,
+                    <?= $total['stats'][5]['sum_view'] ?>,
+                    <?= $total['stats'][6]['sum_view'] ?>,
+                    <?= $total['stats'][7]['sum_view'] ?>,
+                    <?= $total['stats'][8]['sum_view'] ?>,
+                    <?= $total['stats'][9]['sum_view'] ?>,
+                    <?= $total['stats'][10]['sum_view'] ?>,
+                    <?= $total['stats'][11]['sum_view'] ?>,
+                    <?= $total['stats'][12]['sum_view'] ?>
                 ],
             }, {
                 label: "No of Enquiries Open",
                 fill: false,
                 borderColor: '#bab656',
                 data: [
-                    0,
-                    0,
-                    20,
-                    10,//
-                    3,
-                    4,
-                    6,
-                    6,//
-                    0,
-                    0,
-                    0,
-                    0//
+                    <?= $total['stats'][1]['sum_enq_open'] ?>,
+                    <?= $total['stats'][2]['sum_enq_open'] ?>,
+                    <?= $total['stats'][3]['sum_enq_open'] ?>,
+                    <?= $total['stats'][4]['sum_enq_open'] ?>,
+                    <?= $total['stats'][5]['sum_enq_open'] ?>,
+                    <?= $total['stats'][6]['sum_enq_open'] ?>,
+                    <?= $total['stats'][7]['sum_enq_open'] ?>,
+                    <?= $total['stats'][8]['sum_enq_open'] ?>,
+                    <?= $total['stats'][9]['sum_enq_open'] ?>,
+                    <?= $total['stats'][10]['sum_enq_open'] ?>,
+                    <?= $total['stats'][11]['sum_enq_open'] ?>,
+                    <?= $total['stats'][12]['sum_enq_open'] ?>
                 ],
             }, {
                 label: "No of Enquiries Closed",
                 fill: false,
                 borderColor: '#263238',
                 data: [
-                    0,
-                    7,
-                    10,
-                    0,//
-                    3,
-                    4,
-                    6,
-                    8,//
-                    0,
-                    0,
-                    0,
-                    0//
+                    <?= $total['stats'][1]['sum_enq_close'] ?>,
+                    <?= $total['stats'][2]['sum_enq_close'] ?>,
+                    <?= $total['stats'][3]['sum_enq_close'] ?>,
+                    <?= $total['stats'][4]['sum_enq_close'] ?>,
+                    <?= $total['stats'][5]['sum_enq_close'] ?>,
+                    <?= $total['stats'][6]['sum_enq_close'] ?>,
+                    <?= $total['stats'][7]['sum_enq_close'] ?>,
+                    <?= $total['stats'][8]['sum_enq_close'] ?>,
+                    <?= $total['stats'][9]['sum_enq_close'] ?>,
+                    <?= $total['stats'][10]['sum_enq_close'] ?>,
+                    <?= $total['stats'][11]['sum_enq_close'] ?>,
+                    <?= $total['stats'][12]['sum_enq_close'] ?>
                 ],
             }, {
                 label: "No of Sales",
                 fill: false,
                 borderColor: '#be5559',
                 data: [
-                    10,
-                    7,
-                    22,
-                    10,//
-                    3,
-                    4,
-                    6,
-                    8,//
-                    4,
-                    0,
-                    0,
-                    0//
+                    <?= $total['stats'][1]['sum_sales'] ?>,
+                    <?= $total['stats'][2]['sum_sales'] ?>,
+                    <?= $total['stats'][3]['sum_sales'] ?>,
+                    <?= $total['stats'][4]['sum_sales'] ?>,
+                    <?= $total['stats'][5]['sum_sales'] ?>,
+                    <?= $total['stats'][6]['sum_sales'] ?>,
+                    <?= $total['stats'][7]['sum_sales'] ?>,
+                    <?= $total['stats'][8]['sum_sales'] ?>,
+                    <?= $total['stats'][9]['sum_sales'] ?>,
+                    <?= $total['stats'][10]['sum_sales'] ?>,
+                    <?= $total['stats'][11]['sum_sales'] ?>,
+                    <?= $total['stats'][12]['sum_sales'] ?>
                 ],
             }]
         },

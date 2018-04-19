@@ -17,7 +17,9 @@
 		
 		public function index()
 		{
-			$this->template->load('template/template','admin/admin');
+            $statik = new M_statistic();
+            $data['total'] = $statik->statisticMonthly();
+            $this->template->load('template/template','admin/admin', $data);
 		}
 		
 		
