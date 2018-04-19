@@ -29,6 +29,7 @@
 
         public function active_record()
         {
+
             return $this->db->query("SELECT COUNT(*) AS total FROM product_listing WHERE appro_a = '0'")->row()->total;
 		}
 
