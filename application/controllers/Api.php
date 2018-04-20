@@ -18,6 +18,14 @@ class Api extends MY_Controller
         echo json_encode($data);
     }
 
+    public function get_od_normal()
+    {
+        $data = M_dimension::where('id_product_type', $this->input->post('id_product_type'))
+                ->groupBy('dm_od_imperial')
+                ->get();
+        $this->toJson(['dimensions' => $data]);
+    }
+
     public function get_od()
     {
         $this->datatables->select('dm_od_label, dm_od_imperial, dm_od_metric');

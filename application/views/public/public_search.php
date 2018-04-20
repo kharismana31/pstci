@@ -7,69 +7,68 @@
                     <div class="col-md-4">
 						<div class="form-group form-group-default form-group-default-select2">
 							<label>Product Type</label>
-							<select class="full-width" data-init-plugin="select2" id="product" name="product">
-								<option></option>
-								<option value="conductor">Conductor</option>
-								<option value="casing">Casing</option>
-								<option value="tubing">Tubing</option>
-								<option value="popjoints">Pop Joints</option>
-								<option value="couplings">Couplings</option>
-							</select>
+                            <select class="full-width" onchange="setProductType()" data-init-plugin="select2" name="product_type" required>
+                                <option>Select Product Type</option>
+                                <?php
+                                foreach($product_types as $type): ?>
+                                    <option data-id="<?= $type->id ?>" value="<?= strtolower($type->name) ?>"><?= $type->name ?></option>
+                                <?php endforeach; ?>
+                            </select>
 						</div>
 					</div>
                     <div class="col-md-4">
-						<div class="form-group form-group-default form-group-default-select2">
-                            <label>OD</label>
-                            <select class="full-width" data-init-plugin="select2" id="od" name="od">
-                                <option value="2.0">2.0</option>
-                                <option value="3.0">3.0</option>
-                                <option value="3.5">3.5</option>
-							</select>
-						</div>
-					</div>
+                        <div class="form-group form-group-default form-group-default-select2">
+                            <label>Steel Type</label>
+                            <select class="full-width" data-init-plugin="select2" name="steel_type">
+                                <option value="Carbon">Carbon</option>
+                                <option value="CRA">CRA</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="col-md-4">
-						<div id="one" class="form-group form-group-default form-group-default-select2">
-							<label>Weight</label>
-							<select class="full-width" data-init-plugin="select2" id="weigth" name="weigth"
-							disabled="">
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option valuse="3">3</option>
-							</select>
-						</div>
-						<div id="two" class="form-group form-group-default hidden">
-							<label>Weight</label>
-							<div class="controls">
-								<input type='text' class="form-control" placeholder="ppf" id="other" name="other" />
-							</div>
-						</div>
-					</div>
+                        <div class="form-group form-group-default form-group-default-select2">
+                            <!-- Buat nentuin ukuran OD sama Weightnya pakai yg mana -->
+                            <label>Unit of Measure</label>
+                            <select class="full-width" data-init-plugin="select2" name="unit_of_measure" multiple>
+                                <optgroup label="Unit of Measure OD">
+                                    <option value="inches">inches</option>
+                                    <option value="mm">mm</option>
+                                </optgroup>
+                                <optgroup label="Unit of Measure Weight">
+                                    <option value="ppf">ppf</option>
+                                    <option value="kg/m">kg/m</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
 				</div>
                 <div class="row">
                     <div class="col-md-4">
-						<div class="form-group form-group-default required">
-							<label>Company</label>
-							<div class="controls">
-								<input type="text" class="form-control" placeholder="Company" required />
-							</div>
-						</div>
-					</div>
+                        <div class="form-group form-group-default form-group-default-select2">
+                            <label>OD</label>
+                            <select class="full-width" data-init-plugin="select2" name="od">
+                                <option>Select Product Type First</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4 weight">
+                        <div class="form-group form-group-default required">
+                            <label>Weight</label>
+                            <input type="text" class="form-control" name="weight" placeholder="Weight" />
+                        </div>
+                    </div>
+                    <div class="col-md-4 wall_thickness">
+                        <div class="form-group form-group-default required">
+                            <label>Wall Thickness</label>
+                            <input type="text" class="form-control" name="wall_thickness" placeholder="Wall Thickness" />
+                        </div>
+                    </div>
                     <div class="col-md-4">
-						<div class="form-group form-group-default required">
-							<label>Grade</label>
-							<div class="controls">
-								<input type="text" class="form-control" placeholder="Grade" required />
-							</div>
-						</div>
-					</div>
-                    <div class="col-md-4">
-						<div class="form-group form-group-default required">
-							<label>Connection</label>
-							<div class="controls">
-								<input type="text" class="form-control" placeholder="Connection" required />
-							</div>
-						</div>
-					</div>
+                        <div class="form-group form-group-default required">
+                            <label>Length</label>
+                            <input type="text" class="form-control" name="length" placeholder="Length" />
+                        </div>
+                    </div>
 				</div>
 				<div class="row">
 					<div>&nbsp;</div>
@@ -82,36 +81,3 @@
 		</div>
 	</div>
 </div>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#product").change(function() {
-			var el = $(this).val() ;
-
-			if(el === "casing" || el === "tubing" || el === "popjoints")
-			{
-				$("#one").val("").removeClass("hidden");
-				$("#two").val("").addClass("hidden");
-				$("#weigth").prop("disabled", false);
-			}
-			else if(el === "couplings")
-			{
-				$("#two").val("").removeClass("hidden");
-				$("#one").val("").addClass("hidden");
-			}
-			else
-			{
-				$("#weigth").prop("disabled", true);	
-				/*$("#other").val("").addClass("hidden");*/
-				/*$("#weigth").prop("disabled", true);*/
-				/*$("#weigth").val("").removeClass("hidden");*/
-			}
-		});
-	});
-</script>
-<style type="text/css">
-	.hidden
-	{
-		display:none;
-	}
-</style>
